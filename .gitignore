@@ -1,40 +1,71 @@
-# Generated data files
-*.json
-!api_config.json.example
-
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Virtual environments
+# Virtual Environment
 venv/
 env/
 ENV/
+.venv/
+.env/
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
 
-# Backup directories (keep for safety)
-# backup/
-# backup_data/
-# backup_docs/
-
-# Results and logs
+# Application Data Files (NEVER commit these - contain private keys!)
+*.json
+!api_config.json.example
 *.log
-*.txt
-!requirements.txt
-
-# Wallet data (sensitive)
+*.ldb
+*.db
+LEVELDB_DATA/
 detected_wallet_data_summary.json
 filtered_wallet_entries.json
 checked_addresses_history.json
+balance_checker.log
+auto_recovery.log
+FUNDED_ADDRESSES.txt
 FUNDED_CONTROLLED_ADDRESSES_*.json
+
+# User Configuration
+api_config.json
+
+# Temporary Files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Development files (not for production)
+wallet_analysis_original.py
+README_new.md
+WORKFLOW.md
+QUICK_START.md
+safe_data_analyzer.py

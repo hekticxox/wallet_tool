@@ -1,64 +1,23 @@
-# API Configuration for Better Rate Limits
-# Copy this to api_config.json and add your API keys
-
 {
-  "etherscan": {
-    "api_key": "YOUR_ETHERSCAN_API_KEY_HERE",
-    "base_url": "https://api.etherscan.io/api",
-    "rate_limit_per_second": 5,
-    "free_tier_limit": 100000
+  "etherscan_api_key": "YourApiKeyToken",
+  "rate_limits": {
+    "ethereum_requests_per_second": 5,
+    "bitcoin_requests_per_second": 1,
+    "solana_requests_per_second": 2
   },
-  
-  "blockchair": {
-    "api_key": "YOUR_BLOCKCHAIR_API_KEY_HERE", 
-    "base_url": "https://api.blockchair.com",
-    "rate_limit_per_second": 30,
-    "premium_features": true
+  "timeouts": {
+    "ethereum": 15,
+    "bitcoin": 15,
+    "solana": 10
   },
-  
-  "alchemy": {
-    "api_key": "YOUR_ALCHEMY_API_KEY_HERE",
-    "base_url": "https://eth-mainnet.g.alchemy.com/v2/",
-    "rate_limit_per_second": 300,
-    "compute_units_per_second": 300
+  "api_endpoints": {
+    "ethereum": "https://api.etherscan.io/api",
+    "bitcoin": "https://blockstream.info/api",
+    "solana": "https://api.mainnet-beta.solana.com"
   },
-  
-  "infura": {
-    "api_key": "YOUR_INFURA_PROJECT_ID_HERE",
-    "base_url": "https://mainnet.infura.io/v3/",
-    "rate_limit_per_day": 100000
-  },
-  
-  "quicknode": {
-    "endpoint": "YOUR_QUICKNODE_ENDPOINT_HERE",
-    "rate_limit_per_second": 25
-  },
-  
-  "blockcypher": {
-    "api_token": "YOUR_BLOCKCYPHER_TOKEN_HERE",
-    "base_url": "https://api.blockcypher.com/v1",
-    "rate_limit_per_hour": 200,
-    "rate_limit_per_second": 3
-  },
-  
-  "bitcoin_apis": {
-    "blockstream": "https://blockstream.info/api",
-    "mempool": "https://mempool.space/api",
-    "blockchain_info": "https://blockchain.info"
-  },
-  
-  "solana_rpcs": [
-    "https://api.mainnet-beta.solana.com",
-    "https://solana-api.projectserum.com",
-    "https://rpc.ankr.com/solana"
-  ],
-  
-  "rate_limiting": {
-    "base_delay_eth": 0.2,
-    "base_delay_btc": 0.5,  
-    "base_delay_sol": 0.1,
-    "backoff_multiplier": 2.0,
-    "max_retries": 3,
-    "batch_delay": 15
+  "batch_settings": {
+    "addresses_per_batch": 25,
+    "pause_between_batches": 7,
+    "max_concurrent_requests": 1
   }
 }
