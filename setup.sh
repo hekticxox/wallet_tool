@@ -14,24 +14,29 @@ fi
 PYTHON_VERSION=$(python3 -c "import sys; print(f'{sys.version_info.major}.{sys.version_info.minor}')")
 echo "✅ Python $PYTHON_VERSION detected"
 
-# Check if we're already in a virtual environment
-if [[ "$VIRTUAL_ENV" != "" ]]; then
-    echo "✅ Virtual environment already active: $(basename $VIRTUAL_ENV)"
-else
-    # Create virtual environment if it doesn't exist
-    if [ ! -d "venv" ]; then
-        echo "📦 Creating virtual environment..."
-        python3 -m venv venv
-        
-        if [ $? -ne 0 ]; then
-            echo "❌ Failed to create virtual environment"
-            exit 1
-        fi
-    fi
+# Create virtual environment if it doesn't exist
+if [ ! -d "venv" ]; then
+    echo "📦 Creating virtual environment..."
+    python3 -m venv venv
     
-    echo "🔄 Activating virtual environment..."
-    source venv/bin/activate
+    if [ $? -ne 0 ]; then
+        echo "❌ Failed to create virtual environment"
+        echo "Make sure python3-venv is installed: apt install python3-venv"
+        exit 1
+    fi
 fi
+
+# Activate virtual environment
+echo "🔄 Activating virtual environment..."
+source venv/bin/activate
+
+# Check if we're in the venv
+if [[ "$VIRTUAL_ENV" == "" ]]; then
+    echo "❌ Failed to activate virtual environment"
+    exit 1
+fi
+
+echo "✅ Virtual environment active: $(basename $VIRTUAL_ENV)"
 
 # Upgrade pip
 echo "⬆️  Upgrading pip..."
@@ -56,35 +61,23 @@ chmod +x auto_recovery.sh
 # Create example API config
 if [ ! -f "api_config.json" ]; then
     echo "📝 Creating API configuration template..."
-    cat > api_config.json << EOF
-{
-  "etherscan_api_key": "YourApiKeyToken",
-  "rate_limits": {
-    "ethereum": 5,
-    "bitcoin": 1,
-    "solana": 2
-  },
-  "timeouts": {
-    "ethereum": 15,
-    "bitcoin": 15,
-    "solana": 10
-  }
-}
-EOF
-    echo "   📄 Created api_config.json (optional configuration)"
+    cp api_config.json.example api_config.json
+    echo "   📄 Created api_config.json from template"
+    echo "   ✏️  You can customize API settings if needed"
 fi
 
 echo ""
 echo "✅ Setup complete!"
 echo ""
 echo "🚀 Quick Start:"
-echo "   1. python3 wallet_analysis_clean.py    # Main analysis"
-echo "   2. python3 continuous_checker.py       # Balance checking"
-echo "   3. ./monitor_checker.sh                # Monitor progress"
+echo "   source venv/bin/activate          # Activate virtual environment"
+echo "   python3 wallet_analysis.py       # Main analysis"
+echo "   python3 continuous_checker.py    # Balance checking"  
+echo "   ./monitor_checker.sh             # Monitor progress"
 echo ""
 echo "📚 For detailed instructions, see README.md"
 echo ""
 
 # Show current directory contents
-echo "📁 Project files:"
-ls -la *.py *.sh *.md requirements.txt 2>/dev/null | grep -v "^d"
+echo "📁 Ready to use:"
+ls -la *.py *.sh README.md requirements.txt api_config.json* 2>/dev/null | head -10

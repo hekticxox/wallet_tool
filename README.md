@@ -1,108 +1,130 @@
-# 🔐 Wallet Recovery Tool
+# 🔍 Crypto Wallet Recovery Tool
 
-A clean, professional Python toolkit for recovering cryptocurrency wallets from browser storage dumps and LevelDB files.
+A comprehensive Python tool for extracting and analyzing cryptocurrency private keys, seed phrases, and wallet addresses from LevelDB database files (commonly found in browser storage, wallet applications, etc.).
 
-[![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+## ⚡ Features
+
+- **LevelDB Analysis**: Recursively scans directories for LevelDB databases and extracts readable data
+- **Multi-Chain Support**: Bitcoin, Ethereum, and Solana address generation and validation
+- **Seed Phrase Detection**: Automatically identifies and validates BIP39 mnemonic phrases
+- **Private Key Extraction**: Finds both hex-format private keys and WIF-encoded Bitcoin keys
+- **Balance Checking**: Automated balance verification across multiple blockchain networks
+- **Continuous Operation**: Background processing with monitoring and auto-recovery
+- **Cross-Chain Mapping**: Links private keys to their corresponding addresses across chains
 
 ## 🚀 Quick Start
 
-```bash
-# Clone the repository
-git clone https://github.com/hekticxox/wallet_tool.git
-cd wallet_tool
+### Prerequisites
 
-# Set up Python environment
-python3 -m venv venv
-source venv/bin/activate
+- Python 3.8+
+- pip (Python package manager)
 
-# Install dependencies
-pip install -r requirements.txt
+### Installation
 
-# Run wallet analysis
-python wallet_analysis.py
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/yourusername/wallet-recovery-tool.git
+   cd wallet-recovery-tool
+   ```
 
-# Check balances for found addresses
-python controlled_address_checker.py
-```
+2. **Create virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\\Scripts\\activate
+   ```
 
-## 📋 What This Tool Does
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
 
-This toolkit **recovers cryptocurrency wallets** from:
-- 🌐 **Browser extension data** (MetaMask, Trust Wallet, etc.)
-- 💾 **LevelDB databases** from Chrome/Edge profiles  
-- 📁 **Browser storage** with wallet information
-- 🔑 **Private keys** and mnemonic phrases
+### Basic Usage
 
-**Supported Blockchains:**
-- ₿ **Bitcoin** (BTC) - P2PKH addresses
-- Ξ **Ethereum** (ETH) - Standard addresses  
-- ◎ **Solana** (SOL) - Native addresses
+1. **Extract wallet data from LevelDB**
+   ```bash
+   python wallet_analysis.py
+   ```
+   - Enter the path to your LevelDB directory when prompted
+   - The tool will scan all subdirectories recursively
+   - Results saved to `detected_wallet_data_summary.json`
 
-## 🗂 Repository Structure
+2. **Check balances (optional)**
+   ```bash
+   python continuous_checker.py
+   ```
+   - Automatically checks balances for all detected addresses
+   - Runs continuously until all addresses are verified
+   - Funded addresses logged to `FUNDED_ADDRESSES.txt`
 
-```
-wallet_tool/
-├── wallet_analysis.py              # Main wallet extraction script
-├── controlled_address_checker.py   # Balance checker for controlled addresses  
-├── requirements.txt                # Python dependencies
-├── README.md                       # Documentation
-├── WORKFLOW.md                     # Step-by-step workflow guide
-├── LICENSE                         # MIT License
-├── .gitignore                      # Git ignore rules
-└── .vscode/                        # VS Code configuration
-```
+## 📁 Output Files
 
-## 🛠 Core Scripts
+- `detected_wallet_data_summary.json`: Complete analysis results
+- `filtered_wallet_entries.json`: Raw LevelDB data
+- `checked_addresses_history.json`: Balance checking progress
+- `FUNDED_ADDRESSES.txt`: Found addresses with balances
+- `balance_checker.log`: Processing logs
 
-### 1. Wallet Analysis (`wallet_analysis.py`)
-Extracts wallet data from browser directories:
-- Scans LevelDB files for private keys and mnemonics
-- Generates addresses for Bitcoin, Ethereum, and Solana
-- Cross-validates that keys generate expected addresses  
-- Outputs comprehensive JSON summaries
+## 🛠️ Management Scripts
 
-### 2. Controlled Address Checker (`controlled_address_checker.py`)
-Checks balances only for addresses with known private keys:
-- Rate-limited API calls to respect service limits
-- Multiple blockchain support with API fallbacks
-- Tracks checking history to avoid duplicates
-- Shows private keys for any funded addresses found
+- `./monitor_checker.sh`: Check balance checker status
+- `./restart_checker.sh`: Restart balance checker
+- `./auto_recovery.sh`: Auto-restart crashed processes (for cron)
 
-## 📊 Example Output
+## 🔧 Configuration
 
-```
-Detected private keys: 122,581
-Detected Ethereum addresses: 134,909
-Detected Bitcoin addresses: 122,591
-Detected Solana addresses: 122,581
+The tool works out-of-the-box with default API endpoints:
 
-✅ Balance checking: 1,083 addresses checked
-💰 Found funded addresses with private keys available
-```
+- **Bitcoin**: blockstream.info API
+- **Ethereum**: etherscan.io API (rate limited)
+- **Solana**: Official RPC endpoint
 
-## ⚡ Key Features
+## 📊 Performance
 
-- **🎯 Targeted**: Only checks addresses you can actually control
-- **🚀 Fast**: Smart caching and rate limiting  
-- **🔒 Secure**: Works offline, keys never leave your machine
-- **📈 Scalable**: Handles datasets with 100K+ addresses
-- **🔄 Resumable**: All progress automatically saved
-- **🛡️ Professional**: Clean code, comprehensive error handling
+- **Processing Rate**: ~1,333 addresses/hour (API rate limited)
+- **Memory Usage**: ~300-400MB typical
+- **Storage**: Minimal (results are JSON files)
 
-## 📖 Documentation
+## ⚠️ Important Notes
 
-- **[WORKFLOW.md](WORKFLOW.md)** - Complete step-by-step workflow
-- **[LICENSE](LICENSE)** - MIT License details
+### Security & Privacy
+- **Never commit wallet data files** - they contain sensitive private keys
+- **Use on isolated systems** for maximum security
+- **Backup your findings** before running balance checks
+- **This tool is for recovery purposes only** - respect legal boundaries
 
-## ⚠️ Legal Disclaimer
-
-This tool is for **recovering your own wallets** only. Use responsibly and in compliance with local laws.
+### Legal Disclaimer
+- Only use on wallet data you own or have explicit permission to analyze
+- Cryptocurrency recovery tools should be used responsibly
+- Users are responsible for complying with local laws and regulations
 
 ## 🤝 Contributing
 
-Issues and pull requests welcome! Please ensure code follows the existing style and includes appropriate tests.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+If you encounter issues:
+
+1. Check the [Issues](https://github.com/yourusername/wallet-recovery-tool/issues) page
+2. Review the logs in `balance_checker.log`
+3. Ensure your LevelDB directory is accessible
+4. Verify all dependencies are installed correctly
+
+## 🙏 Acknowledgments
+
+- Built with [bip_utils](https://github.com/ebellocchia/bip_utils) for cryptographic functions
+- Uses [plyvel](https://github.com/wbolster/plyvel) for LevelDB access
+- Ethereum support via [eth_keys](https://github.com/ethereum/eth-keys)
+- Solana integration with [solders](https://github.com/kevinheavey/solders)
 
 ---
 
-**Made with ❤️ for the crypto recovery community**
+**⭐ If this tool helped you recover your wallet, please star the repository!**
