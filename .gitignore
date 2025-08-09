@@ -1,0 +1,40 @@
+# Generated data files
+*.json
+!api_config.json.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Backup directories (keep for safety)
+# backup/
+# backup_data/
+# backup_docs/
+
+# Results and logs
+*.log
+*.txt
+!requirements.txt
+
+# Wallet data (sensitive)
+detected_wallet_data_summary.json
+filtered_wallet_entries.json
+checked_addresses_history.json
+FUNDED_CONTROLLED_ADDRESSES_*.json
