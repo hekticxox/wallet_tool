@@ -158,7 +158,7 @@ class SimpleDashboard:
             print(f"📈 {self.create_progress_bar(db_stats['efficiency_percent'])}")
             print(f"⏰ Recent activity (1h): {self.format_number(db_stats['recent_activity'])} addresses")
             
-            if db_stats['chain_distribution']:
+            if db_stats.get('chain_distribution') and isinstance(db_stats['chain_distribution'], dict):
                 print(f"\n📊 Chain Distribution:")
                 for chain, count in db_stats['chain_distribution'].items():
                     print(f"   {chain.upper()}: {self.format_number(count)} addresses")
@@ -186,9 +186,13 @@ class SimpleDashboard:
                     address_short = addr.get('address', '')[:20] + '...' if len(addr.get('address', '')) > 20 else addr.get('address', '')
                     print(f"   {chain}: {address_short} (Balance: {balance})")
         else:
-            if db_stats and db_stats.get('funded_addresses', 0) > 0:
-                print(f"🎉 Found: {db_stats['funded_addresses']} addresses")
-                print(f"💎 Total value: {db_stats['total_balance']}")
+            funded_count = db_stats.get('funded_addresses', 0) if db_stats else 0
+            total_balance = db_stats.get('total_balance', 0) if db_stats else 0
+            
+            if (isinstance(funded_count, (int, float)) and funded_count > 0):
+                print(f"🎉 Found: {funded_count} addresses")
+                if isinstance(total_balance, (int, float)):
+                    print(f"💎 Total value: {total_balance}")
             else:
                 print("📭 No funded addresses found yet")
         
@@ -235,7 +239,10 @@ class SimpleDashboard:
             print("❌ Database: Error")
         
         # Check recent activity
-        if db_stats and db_stats.get('recent_activity', 0) > 0:
+        recent_activity = db_stats.get('recent_activity', 0) if db_stats else 0
+        if (db_stats and 
+            isinstance(recent_activity, (int, float)) and 
+            recent_activity > 0):
             health_score += 25
             print("✅ Recent activity: Detected")
         else:

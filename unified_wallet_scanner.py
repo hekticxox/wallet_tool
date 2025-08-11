@@ -61,9 +61,9 @@ class UnifiedWalletScanner:
         
         # Rate limiting
         self.last_api_calls = {
-            'etherscan': 0,
-            'bitcoin': 0,
-            'solana': 0
+            'etherscan': 0.0,
+            'bitcoin': 0.0,
+            'solana': 0.0
         }
         
         print("🚀 Unified Wallet Scanner initialized")
@@ -184,7 +184,7 @@ class UnifiedWalletScanner:
         
         return False
     
-    def record_address(self, address, chain, balance=0, private_key=None, pattern_score=0):
+    def record_address(self, address, chain, balance=0.0, private_key=None, pattern_score=0):
         """Record checked address with enhanced metadata"""
         
         # Add to cache immediately
