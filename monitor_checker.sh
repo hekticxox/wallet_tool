@@ -58,7 +58,7 @@ else
     echo "❌ Balance checker is NOT RUNNING"
     echo ""
     echo "🔧 To start it:"
-    echo "   nohup python controlled_address_checker.py > balance_checker.log 2>&1 &"
+    echo "   nohup python continuous_checker.py > balance_checker.log 2>&1 &"
 fi
 
 echo ""
@@ -66,5 +66,5 @@ echo "🎯 Commands:"
 echo "============"
 echo "📊 Monitor:     ./monitor_checker.sh"
 echo "📝 View logs:   tail -f balance_checker.log"
-echo "⏹️  Stop:       pkill -f controlled_address_checker.py"
+echo "⏹️  Stop:       pkill -f continuous_checker.py"
 echo "🔄 Restart:     ./restart_checker.sh"
