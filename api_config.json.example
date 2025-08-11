@@ -1,5 +1,5 @@
 {
-  "etherscan_api_key": "YourApiKeyToken",
+  "etherscan_api_key": "RHI2QM5XKCUI3TDNKSEVI28PGHR4RY9I79",
   "rate_limits": {
     "ethereum_requests_per_second": 5,
     "bitcoin_requests_per_second": 1,

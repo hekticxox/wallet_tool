@@ -1,0 +1,18 @@
+# Top Candidate Addresses for Balance Checking
+# Extracted from net605 dataset, sorted by likelihood
+
+# Bitcoin Addresses (Bech32 format may have issues, let's focus on valid ones)
+1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa  # Test address
+3J98t1WpEZ73CNmQviecrnyiWrnqRhWNLy  # Test address
+
+# Ethereum Addresses (These look valid)
+0x6e59e2a98d12f45ab5872942fe45a1036b1ea9c9
+0x8bd210f4a679eced866b725a85ba75a2c158f651
+0x7ddCEF59b494096e74ae496858387aC793b80B61
+0x2250543d7ba50d1ddbefe1df9427204bf90c5eb7
+0x9c598de9d1f351dad1fa960df1f04153611dfd6e
+0x7be8076f4ea4a4ad08075c2508e481d6c946d12b
+0xaaee65df7aefbad2bd75bb790ef0ff3fcdf52c68
+0x6985884c4392d348587b19cb9eaaf157f13271cd
+0xa058c6f2a56baaed5de4bcad8f2cb26f6a32b7d2
+0xcea221a75fde7ea43b961aa21a81c4973661a937

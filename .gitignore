@@ -28,6 +28,21 @@ ENV/
 .venv/
 .env/
 
+# Environment Variables and API Keys (CRITICAL - NEVER COMMIT!)
+.env
+.env.local
+.env.production
+.env.staging
+*.env
+api_keys.json
+secrets.json
+api_config.json
+
+# Private Keys and Wallet Data (NEVER COMMIT!)
+*private_key*
+*mnemonic*
+*seed*
+
 # IDE
 .vscode/
 .idea/
