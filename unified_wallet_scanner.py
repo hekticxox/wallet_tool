@@ -17,7 +17,7 @@ import plyvel
 from decimal import Decimal
 from collections import defaultdict
 from datetime import datetime, timedelta
-from bip_utils import WifEncoder, WifDecoder, Bip44, Bip44Coins, Bip39SeedGenerator
+from bip_utils import WifEncoder, WifDecoder, Bip44, Bip44Coins, Bip44Changes, Bip39SeedGenerator
 from eth_keys import keys as eth_keys
 from eth_utils import to_checksum_address
 
@@ -481,19 +481,17 @@ class UnifiedWalletScanner:
                     
                     # Compressed Bitcoin address (most common)
                     try:
-                        wif_compressed = WifEncoder.Encode(private_key_int, Bip44Coins.BITCOIN, True)
-                        decoded = WifDecoder.Decode(Bip44Coins.BITCOIN, wif_compressed)
-                        ctx = Bip44.FromPrivateKey(decoded, Bip44Coins.BITCOIN)
-                        addresses['bitcoin_compressed'] = ctx.PublicKey().ToAddress()
+                        private_key_bytes = private_key_int.to_bytes(32, byteorder='big')
+                        ctx = Bip44.FromPrivateKey(private_key_bytes, Bip44Coins.BITCOIN)
+                        addresses['bitcoin_compressed'] = ctx.Purpose().Coin().Account(0).Change(Bip44Changes.CHAIN_EXT).AddressIndex(0).PublicKey().ToAddress()
                     except:
                         pass
                     
                     # Uncompressed Bitcoin address (legacy)
                     try:
-                        wif_uncompressed = WifEncoder.Encode(private_key_int, Bip44Coins.BITCOIN, False)
-                        decoded = WifDecoder.Decode(Bip44Coins.BITCOIN, wif_uncompressed)
-                        ctx = Bip44.FromPrivateKey(decoded, Bip44Coins.BITCOIN)
-                        addresses['bitcoin_uncompressed'] = ctx.PublicKey().ToAddress()
+                        private_key_bytes = private_key_int.to_bytes(32, byteorder='big')
+                        ctx = Bip44.FromPrivateKey(private_key_bytes, Bip44Coins.BITCOIN)
+                        addresses['bitcoin_uncompressed'] = ctx.Purpose().Coin().Account(0).Change(Bip44Changes.CHAIN_EXT).AddressIndex(0).PublicKey().ToAddress()
                     except:
                         pass
             
@@ -550,9 +548,13 @@ class UnifiedWalletScanner:
         for wif_key in wif_matches:
             try:
                 # Convert WIF to hex format
-                decoded = WifDecoder.Decode(Bip44Coins.BITCOIN, wif_key)
-                hex_key = decoded.Raw().ToHex().lower()
-                private_keys.add(hex_key)
+                try:
+                    decoded = WifDecoder.Decode(wif_key)
+                    private_key_bytes = decoded[0]  # First element is the private key bytes
+                    hex_key = private_key_bytes.hex().lower()
+                    private_keys.add(hex_key)
+                except Exception:
+                    pass  # Invalid WIF key
             except Exception:
                 pass  # Invalid WIF key
         
@@ -563,8 +565,9 @@ class UnifiedWalletScanner:
         for b58_key in base58_matches:
             try:
                 # Attempt to decode as WIF
-                decoded = WifDecoder.Decode(Bip44Coins.BITCOIN, b58_key)
-                hex_key = decoded.Raw().ToHex().lower()
+                decoded = WifDecoder.Decode(b58_key)
+                private_key_bytes = decoded[0]  # First element is the private key bytes
+                hex_key = private_key_bytes.hex().lower()
                 private_keys.add(hex_key)
             except Exception:
                 pass  # Not a valid private key
