@@ -1,0 +1,23 @@
+{
+  "etherscan_api_key": "RHI2QM5XKCUI3TDNKSEVI28PGHR4RY9I79",
+  "rate_limits": {
+    "ethereum_requests_per_second": 5,
+    "bitcoin_requests_per_second": 1,
+    "solana_requests_per_second": 2
+  },
+  "timeouts": {
+    "ethereum": 15,
+    "bitcoin": 15,
+    "solana": 10
+  },
+  "api_endpoints": {
+    "ethereum": "https://api.etherscan.io/api",
+    "bitcoin": "https://blockstream.info/api",
+    "solana": "https://api.mainnet-beta.solana.com"
+  },
+  "batch_settings": {
+    "addresses_per_batch": 25,
+    "pause_between_batches": 7,
+    "max_concurrent_requests": 1
+  }
+}
