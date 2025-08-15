@@ -1,86 +1,144 @@
+# Sensitive wallet recovery data
+*.env
+*private*
+*key*
+*wallet*
+*.json
+*backup*
+*audit*
+*recovery*
+
+# Exception for documentation
+!README.md
+!*.md
+!requirements.txt
+!*.example
+
 # Python
+# Personal and Sensitive Data - NEVER COMMIT
+*.key
+*.pem
+*.p12
+*.pfx
+private_keys/
+seed_phrases/
+wallet_files/
+.env
+api_keys.txt
+passwords.txt
+secrets.json
+config.json
+api_config.json
+
+# Personal Working Data and Results
+data/
+results/
+findings/
+discoveries/
+wallets/
+keys/
+addresses/
+reports/
+logs/
+cache/
+temp/
+extracted_*
+found_*
+discovered_*
+*.wallet
+*.dat
+*.json
+*.csv
+*.txt
+*.log
+*.db
+*.sqlite
+*.backup
+
+# Personal Archives and Backups
+Archive/
+archive/
+ARCHIVE_*/
+*_backup_*/
+backup_*/
+security_backup_*/
+FINAL_BACKUP_*/
+old_*/
+net*/
+laser_focus_results/
+hunter_env/
+
+# Personal Configuration and Environment
+venv/
+.venv/
+*.ini
+*.conf
+user_config.*
+personal_*
+my_*
+
+# System and IDE Files
 __pycache__/
 *.py[cod]
 *$py.class
-*.so
 .Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# Virtual Environment
-venv/
-env/
-ENV/
-.venv/
-.env/
-
-# Environment Variables and API Keys (CRITICAL - NEVER COMMIT!)
-.env
-.env.local
-.env.production
-.env.staging
-*.env
-api_keys.json
-secrets.json
-api_config.json
-
-# Private Keys and Wallet Data (NEVER COMMIT!)
-*private_key*
-*mnemonic*
-*seed*
-
-# IDE
+*.so
+.DS_Store
+Thumbs.db
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
 
-# OS
-.DS_Store
-Thumbs.db
+# Build and Distribution
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
 
-# Application Data Files (NEVER commit these - contain private keys!)
-*.json
-!api_config.json.example
-*.log
-*.ldb
-*.db
-LEVELDB_DATA/
-detected_wallet_data_summary.json
-filtered_wallet_entries.json
-checked_addresses_history.json
-balance_checker.log
-auto_recovery.log
-FUNDED_ADDRESSES.txt
-FUNDED_CONTROLLED_ADDRESSES_*.json
+# Testing and Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/
 
-# User Configuration
-api_config.json
+# Documentation Build
+docs/_build/
 
-# Temporary Files
+# Jupyter Notebooks (may contain sensitive output)
+.ipynb_checkpoints/
+*.ipynb
+
+# Package manager files
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Temporary files
 *.tmp
 *.temp
-temp/
-tmp/
+*.bak
+*.orig
 
-# Development files (not for production)
-wallet_analysis_original.py
-README_new.md
-WORKFLOW.md
-QUICK_START.md
-safe_data_analyzer.py
+# OS generated files
+.DS_Store?
+ehthumbs.db
+Icon?
+Thumbs.db
+
+# Personal scripts and utilities (keep only core tools in repo)
+quick_*
+test_*
+sample_*
+check_*
+my_*
+personal_*
+temp_*
+experimental_*
+
+# Large data directories that shouldn't be in repo
+WX51*/
+MHY*/
+MK*/
+IP_*/

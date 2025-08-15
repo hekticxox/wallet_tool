@@ -1,0 +1,32 @@
+{
+  "apis": {
+    "blockchain_info": {
+      "base_url": "https://blockchain.info/",
+      "rate_limit": 1,
+      "timeout": 30
+    },
+    "blockstream": {
+      "base_url": "https://blockstream.info/api/",
+      "rate_limit": 1,
+      "timeout": 30
+    },
+    "etherscan": {
+      "base_url": "https://api.etherscan.io/api",
+      "api_key": "YOUR_ETHERSCAN_API_KEY_HERE",
+      "rate_limit": 5,
+      "timeout": 30
+    },
+    "blockcypher": {
+      "base_url": "https://api.blockcypher.com/v1/",
+      "api_key": "YOUR_BLOCKCYPHER_API_KEY_HERE",
+      "rate_limit": 3,
+      "timeout": 30
+    }
+  },
+  "settings": {
+    "max_parallel_requests": 5,
+    "retry_attempts": 3,
+    "cache_results": true,
+    "log_level": "INFO"
+  }
+}
