@@ -1,4 +1,0 @@
-Traceback (most recent call last):
-  File "/home/admin/wallet_tool/unified_wallet_scanner.py", line 18, in <module>
-    import plyvel
-ModuleNotFoundError: No module named 'plyvel'

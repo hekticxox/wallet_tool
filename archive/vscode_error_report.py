@@ -1,3 +1,4 @@
+import time
 #!/usr/bin/env python3
 """
 VS Code Error Status Report

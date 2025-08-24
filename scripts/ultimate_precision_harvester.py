@@ -1,3 +1,4 @@
+from collections import Counter
 #!/usr/bin/env python3
 """
 🎯 ULTIMATE PRECISION HARVESTER v3.0
@@ -13,6 +14,7 @@ The most advanced wallet key discovery system with:
 """
 
 import json
+import math
 import os
 import sys
 import hashlib
@@ -69,7 +71,7 @@ class PrecisionHarvester:
             # Basic entropy
             byte_counts = Counter(key_hex)
             total = len(key_hex)
-            basic_entropy = -sum((count/total) * (count/total).bit_length() for count in byte_counts.values())
+            basic_entropy = -sum((count/total) * math.log2(count/total) for count in byte_counts.values() if count > 0)
             
             # Pattern entropy (adjacent bytes)
             pattern_score = 0
@@ -226,7 +228,7 @@ class PrecisionHarvester:
         for count in char_counts.values():
             if count > 0:
                 prob = count / total_chars
-                entropy -= prob * (prob.bit_length() if prob > 0 else 0)
+                entropy -= prob * math.log2(prob) if prob > 0 else 0
         
         return min(entropy / 6.0, 1.0)  # Normalize
     

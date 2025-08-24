@@ -1,3 +1,4 @@
+import time
 #!/usr/bin/env python3
 """
 💎 JACKPOT VALIDATOR & ANALYZER

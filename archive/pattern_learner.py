@@ -1,3 +1,4 @@
+from collections import Counter
 #!/usr/bin/env python3
 """
 Pattern Learning System - Learns from funded addresses to improve future searches
