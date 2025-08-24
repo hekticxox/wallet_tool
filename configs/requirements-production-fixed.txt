@@ -1,0 +1,22 @@
+# Production Database Requirements
+# ===============================
+# Core Database
+sqlalchemy>=2.0.0,<3.0.0
+alembic>=1.13.0,<2.0.0
+psycopg2-binary>=2.9.5,<3.0.0
+
+# Connection Pooling & Management
+sqlalchemy-utils>=0.41.0,<1.0.0
+# Note: pgbouncer is installed separately as a system service
+
+# Configuration Management
+pydantic>=2.5.0,<3.0.0
+pydantic-settings>=2.1.0,<3.0.0
+python-dotenv>=1.0.0,<2.0.0
+
+# System Monitoring
+psutil>=5.9.0,<6.0.0
+
+# Development & Testing (optional)
+pytest>=7.4.0,<8.0.0
+pytest-asyncio>=0.21.0,<1.0.0

@@ -1,50 +1,60 @@
-# Sensitive wallet recovery data
+# PRODUCTION SECURITY - NEVER COMMIT SENSITIVE DATA
+# =================================================
+
+# Environment Files
+.env
+.env.local
+.env.production
+.env.development
 *.env
+
+# Sensitive Wallet Data
 *private*
 *key*
 *wallet*
-*.json
+*seed*
+*mnemonic*
 *backup*
 *audit*
 *recovery*
-
-# Exception for documentation
-!README.md
-!*.md
-!requirements.txt
-!*.example
-
-# Python
-# Personal and Sensitive Data - NEVER COMMIT
-*.key
-*.pem
-*.p12
-*.pfx
 private_keys/
 seed_phrases/
 wallet_files/
-.env
+wallets/
+keys/
+addresses/
+
+# API Keys and Credentials
 api_keys.txt
 passwords.txt
 secrets.json
 config.json
 api_config.json
+credentials/
+certs/
+*.pem
+*.p12
+*.pfx
 
-# Personal Working Data and Results
+# Data and Results
 data/
 results/
 findings/
 discoveries/
-wallets/
-keys/
-addresses/
 reports/
 logs/
 cache/
 temp/
+backup/
+archive/
 extracted_*
 found_*
 discovered_*
+scan_results_*
+balance_*
+brain_*
+
+# File Extensions
 *.wallet
 *.dat
 *.json
@@ -53,9 +63,11 @@ discovered_*
 *.log
 *.db
 *.sqlite
+*.sqlite3
 *.backup
+*.dump
 
-# Personal Archives and Backups
+# Archive Directories
 Archive/
 archive/
 ARCHIVE_*/
@@ -66,37 +78,99 @@ FINAL_BACKUP_*/
 old_*/
 net*/
 laser_focus_results/
-hunter_env/
 
-# Personal Configuration and Environment
-venv/
-.venv/
-*.ini
-*.conf
-user_config.*
-personal_*
-my_*
-
-# System and IDE Files
+# Python Environment
 __pycache__/
 *.py[cod]
 *$py.class
 .Python
 *.so
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
+venv/
+.venv/
+env/
+.env/
+ENV/
+env.bak/
+venv.bak/
+hunter_env/
+fresh_env/
 
-# Build and Distribution
+# Distribution / Packaging
 build/
 dist/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Unit Test / Coverage
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+migrations/versions/
+*.sql
+
+# IDE and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# OS Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Node modules (if any web components)
+node_modules/
+npm-debug.log*
+
+# Temporary files
+*.tmp
+*.temp
+temp/
+tmp/
+
+# Exception: Keep Important Files
+!README.md
+!*.md
+!requirements*.txt
+!*.example
+!LICENSE
+!.gitignore
+!src/
+!tests/
+!docs/
 
 # Testing and Coverage
 .pytest_cache/

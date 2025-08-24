@@ -1,0 +1,71 @@
+# Production Requirements for Wallet Recovery Tool
+# Install with: pip install -r requirements-production.txt
+
+# Core Dependencies
+bitcoin==1.1.42
+requests==2.31.0
+pathlib2==2.3.7;python_version<"3.4"
+
+# Cryptocurrency Libraries
+eth-keys==0.4.0
+eth-hash==0.5.2
+eth-utils==2.2.0
+web3==6.11.0
+
+# Database Support (PostgreSQL recommended for production)
+psycopg2-binary==2.9.7
+SQLAlchemy==2.0.23
+alembic==1.12.1
+
+# Async HTTP for high-performance scanning
+aiohttp==3.9.1
+aiofiles==23.2.0
+
+# Security and Encryption
+cryptography==41.0.7
+bcrypt==4.1.2
+keyring==24.3.0
+
+# Data Processing
+pandas==2.1.4
+numpy==1.25.2
+
+# Logging and Monitoring
+structlog==23.2.0
+python-json-logger==2.0.7
+
+# Environment Management
+python-dotenv==1.0.0
+pydantic==2.5.2
+pydantic-settings==2.1.0
+
+# Testing (development only)
+pytest==7.4.3
+pytest-asyncio==0.21.1
+pytest-cov==4.1.0
+
+# Performance Monitoring
+psutil==5.9.6
+memory-profiler==0.61.0
+
+# API Rate Limiting
+ratelimit==2.2.1
+backoff==2.2.1
+
+# CLI Tools
+click==8.1.7
+rich==13.7.0
+tabulate==0.9.0
+
+# Validation and Type Checking
+validators==0.22.0
+typing-extensions==4.8.0
+
+# Production Server (if needed)
+gunicorn==21.2.0;platform_system!="Windows"
+uvicorn==0.24.0
+
+# Development Tools (optional)
+black==23.12.0
+flake8==6.1.0
+mypy==1.7.1
