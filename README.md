@@ -1,53 +1,152 @@
-# 🔑 Wallet Recovery Tool
-**Production-Ready Cryptocurrency Private Key Recovery and Balance Scanner**
+# � Unified Wallet Scanner
+**Professional Multi-Cryptocurrency Wallet Discovery & Balance Verification Tool**
 
-A comprehensive, newly consolidated toolkit for extracting private keys from cryptocurrency wallet files and scanning them for active balances across multiple blockchains.
+A consolidated, production-ready toolkit for cryptocurrency private key recovery and balance scanning across multiple blockchains. Single entry point with menu-driven interface for maximum usability.
 
 [![Python](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+[![Version](https://img.shields.io/badge/version-1.0.0--beta-orange.svg)](https://github.com/hekticxox/wallet_tool)
 
-## 🎯 Quick Start (NEW Consolidated Workflow)
+## 🎯 Quick Start
 
-**Single Entry Point:** All operations now use `main.py`
+**Single Entry Point:** All operations use `unified_wallet_scanner.py`
 
 ```bash
-# 1. Extract private keys from a dataset
-python main.py extract /path/to/dataset/
+# Install dependencies
+pip install -r requirements.txt
 
-# 2. Scan extracted keys for balances  
-python main.py scan
+# Run the unified scanner (interactive menu)
+python unified_wallet_scanner.py
 
-# 3. Generate reports and analysis
-python main.py analyze
+# Or run specific operations directly
+python unified_wallet_scanner.py --brain-wallet
+python unified_wallet_scanner.py --dataset-hunt
 ```
 
-## 📁 Repository Structure (NEWLY ORGANIZED - December 2024)
+## 📁 Repository Structure (Beta v1.0.0)
 
 ```
 wallet_tool/
-├── main.py                     # 🎯 MAIN ENTRY POINT - Start here!
-├── src/                        # 📂 Core application code (ORGANIZED)
-│   ├── core/                   # 🏛️  Core orchestration
-│   │   └── wallet_tool.py      # Main workflow coordinator
-│   ├── scanners/               # 🔍 Balance scanning modules  
-│   │   ├── simple_balance_scan.py  # WIF key scanner
-│   │   └── simple_hex_scanner.py   # Hex key scanner
-│   ├── extractors/             # ⛏️  Key extraction utilities
-│   │   ├── unified_extractor.py    # Key file extraction
-│   │   └── unified_analyzer.py     # Results analysis
-│   ├── reports/                # 📊 Reporting utilities
-│   │   ├── complete_inventory_report.py
-│   │   └── production_status_report.py  
-│   └── utils/                  # 🛠️  Utility tools
-│       ├── erc20_checker.py        # ERC-20 token scanner
-│       └── test_api_keys.py        # API validation
-├── archive/                    # 📦 Legacy code (180 files cleaned up!)
-├── data/                       # 💾 Key storage and extraction results
-├── results/                    # 📈 Scan results and reports
-└── .env.production            # ⚙️  Production configuration
+├── unified_wallet_scanner.py   # 🎯 MAIN ENTRY POINT - Start here!
+├── README.md                   # � This documentation
+├── requirements.txt            # � Python dependencies
+├── setup.sh                    # 🔧 Environment setup script
+├── LICENSE                     # ⚖️  MIT License
+├── .gitignore                  # � Git ignore rules
+├── BETA_TESTING_GUIDE.md       # 🧪 Beta testing instructions
+├── results/                    # � Scan results and reports
+├── Brute-force-database/       # 💾 Password lists (if available)
+└── data/                       # �️  Extracted keys and cache
 ```
 
 ## ✨ Core Features
+
+### 🎯 Menu-Driven Interface
+- **Interactive Menu**: Professional CLI with numbered options
+- **Single Entry Point**: All functionality accessible from one script
+- **Real-time Progress**: Live updates and performance metrics
+- **Comprehensive Reporting**: Detailed scan results and analytics
+
+### 🧠 Brain Wallet Generation
+- **Password List Scanning**: Import from stolen credential databases
+- **Multi-threaded Processing**: Configurable thread count for optimal performance
+- **Real-time Balance Checking**: Instant verification of generated addresses
+- **Smart Rate Limiting**: API-friendly request management
+
+### 🔍 Dataset Private Key Extraction
+- **Pattern Recognition**: Advanced regex patterns for key detection
+- **Multi-format Support**: WIF, HEX, addresses, seed phrases
+- **Batch Processing**: Process thousands of files efficiently
+- **Smart Filtering**: Focus on crypto-related files only
+
+### 💰 Multi-Cryptocurrency Support
+- **Bitcoin (BTC)**: Full support with multiple API endpoints
+- **Ethereum (ETH)**: Address validation and balance checking
+- **Litecoin (LTC)**: Extended cryptocurrency support
+- **Cross-chain**: Expandable architecture for new cryptocurrencies
+
+### ⚡ High-Performance Scanning
+- **Parallel Processing**: Up to 50+ concurrent threads
+- **API Load Balancing**: Multiple endpoint rotation
+- **Memory Optimization**: Efficient resource usage
+- **Progress Tracking**: Real-time performance metrics
+
+## 🚀 Getting Started
+
+### Prerequisites
+- Python 3.11 or higher
+- pip package manager
+- Internet connection for balance verification
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/hekticxox/wallet_tool.git
+cd wallet_tool
+
+# Install dependencies
+pip install -r requirements.txt
+
+# Make scripts executable (Linux/Mac)
+chmod +x unified_wallet_scanner.py setup.sh
+
+# Run setup (optional)
+./setup.sh
+```
+
+### Basic Usage
+
+#### Option 1: Interactive Menu (Recommended)
+```bash
+python unified_wallet_scanner.py
+```
+
+#### Option 2: Quick Operations
+```bash
+# Brain wallet scanning
+python unified_wallet_scanner.py --mode=brain
+
+# Dataset key extraction
+python unified_wallet_scanner.py --mode=extract
+
+# Generate reports
+python unified_wallet_scanner.py --mode=report
+```
+
+## 📋 Menu Options
+
+```
+1️⃣  Brain Wallet Scanner
+    - Generate wallets from password lists
+    - Multi-threaded processing
+    - Real-time balance verification
+
+2️⃣  Dataset Private Key Hunter
+    - Extract keys from stolen credentials
+    - Pattern-based key detection
+    - Crypto file analysis
+
+3️⃣  Multi-Cryptocurrency Scanner
+    - Bitcoin, Ethereum, Litecoin support
+    - Cross-chain balance checking
+    - API load balancing
+
+4️⃣  Parallel Mass Scanner
+    - High-performance scanning
+    - 50+ concurrent threads
+    - Maximum throughput mode
+
+5️⃣  Generate Report
+    - Comprehensive scan results
+    - Performance analytics
+    - Found wallet details
+
+6️⃣  Settings & Configuration
+    - Dataset path management
+    - Thread count optimization
+    - API endpoint configuration
+```
 
 ### 🔍 Extraction Engine
 

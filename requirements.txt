@@ -1,0 +1,14 @@
+# Unified Wallet Scanner Dependencies
+requests>=2.28.0
+hashlib2>=1.0.1
+base58>=2.1.0
+pathlib>=1.0.1
+concurrent.futures>=3.1.1
+
+# Optional dependencies for advanced features
+bitcoin>=1.1.42
+ecdsa>=0.18.0
+cryptography>=3.4.8
+
+# Development dependencies  
+pytest>=7.0.0

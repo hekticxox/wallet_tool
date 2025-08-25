@@ -1,218 +1,34 @@
-# PRODUCTION SECURITY - NEVER COMMIT SENSITIVE DATA
-# =================================================
-
-# Environment Files
+# Sensitive files
 .env
-.env.local
-.env.production
-.env.development
-*.env
+.env.*
+*.key
+*.priv
+*password*
+*credential*
+*secret*
 
-# Sensitive Wallet Data
-*private*
-*key*
-*wallet*
-*seed*
-*mnemonic*
-*backup*
-*audit*
-*recovery*
-private_keys/
-seed_phrases/
-wallet_files/
-wallets/
-keys/
-addresses/
+# Virtual environments
+fresh_env/
+venv/
+env/
 
-# API Keys and Credentials
-api_keys.txt
-passwords.txt
-secrets.json
-config.json
-api_config.json
-credentials/
-certs/
-*.pem
-*.p12
-*.pfx
-
-# Data and Results
+# Data directories
 data/
 results/
-findings/
-discoveries/
-reports/
-logs/
-cache/
-temp/
-backup/
-archive/
-extracted_*
-found_*
-discovered_*
-scan_results_*
-balance_*
-brain_*
+Brute-force-database/
+DATASET/
 
-# File Extensions
-*.wallet
-*.dat
-*.json
-*.csv
-*.txt
-*.log
-*.db
-*.sqlite
-*.sqlite3
-*.backup
-*.dump
-
-# Archive Directories
-Archive/
-archive/
-ARCHIVE_*/
-*_backup_*/
-backup_*/
-security_backup_*/
-FINAL_BACKUP_*/
-old_*/
-net*/
-laser_focus_results/
-
-# Python Environment
+# Cache and temp
 __pycache__/
-*.py[cod]
-*$py.class
-.Python
-*.so
-venv/
-.venv/
-env/
-.env/
-ENV/
-env.bak/
-venv.bak/
-hunter_env/
-fresh_env/
+*.pyc
+*.pyo
+*.tmp
+*.log
 
-# Distribution / Packaging
-build/
-dist/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-*.manifest
-*.spec
-
-# Unit Test / Coverage
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# Database
-*.db
-*.sqlite
-*.sqlite3
-migrations/versions/
-*.sql
-
-# IDE and Editors
+# IDE
 .vscode/
 .idea/
-*.swp
-*.swo
-*~
+
+# OS
 .DS_Store
 Thumbs.db
-
-# OS Files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Node modules (if any web components)
-node_modules/
-npm-debug.log*
-
-# Temporary files
-*.tmp
-*.temp
-temp/
-tmp/
-
-# Exception: Keep Important Files
-!README.md
-!*.md
-!requirements*.txt
-!*.example
-!LICENSE
-!.gitignore
-!src/
-!tests/
-!docs/
-
-# Testing and Coverage
-.pytest_cache/
-.coverage
-htmlcov/
-.tox/
-
-# Documentation Build
-docs/_build/
-
-# Jupyter Notebooks (may contain sensitive output)
-.ipynb_checkpoints/
-*.ipynb
-
-# Package manager files
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-*.orig
-
-# OS generated files
-.DS_Store?
-ehthumbs.db
-Icon?
-Thumbs.db
-
-# Personal scripts and utilities (keep only core tools in repo)
-quick_*
-test_*
-sample_*
-check_*
-my_*
-personal_*
-temp_*
-experimental_*
-
-# Large data directories that shouldn't be in repo
-WX51*/
-MHY*/
-MK*/
-IP_*/
